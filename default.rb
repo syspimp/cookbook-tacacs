@@ -1,0 +1,7 @@
+default['tacacs']['config'] = ::File.join ::File::SEPARATOR, "etc", "tacacs+", "tac_plus.conf"
+default['tacacs']['init'] = ::File.join ::File::SEPARATOR, "etc", "init.d", "tacacs_plus"
+default['tacacs']['default'] = ::File.join ::File::SEPARATOR, "etc", "default", "tacacs+"
+default['tacacs']['log_dir'] = ::File.join ::File::SEPARATOR, "var", "log", "tacacs"
+default['tacacs']['acct_log_path'] = ::File.join ::File::SEPARATOR, "var", "log", "tacacs", "tac_plus.acct"
+default['tacacs']['interface'] = "bond0.100"
+default['tacacs']['tac_key'] = "silverlining"
