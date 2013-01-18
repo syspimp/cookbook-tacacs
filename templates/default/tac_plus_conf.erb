@@ -3,7 +3,9 @@
 
 accounting file = <%= @acc_log_path %>
 
+<% if @tac_key %>
 key = <%= @tac_key %>
+<% end %>
 
 default authentication = file /etc/passwd
 
