@@ -25,7 +25,6 @@ TEMPLATES
 * tac_plus_conf.erb
 * tacacs.erb
 
-
 USAGE
 =====
 
@@ -39,6 +38,31 @@ default
 -------
 
 Installs/Configures `tacacs`
+
+
+TODO: Document the JSON needed to be added to each users data bag
+for the search.
+
+Admin:
+
+```json
+```
+
+Viewer:
+
+```json
+```
+
+Testing
+=====
+
+This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for testing.
+
+    $ cd $repo
+    $ bundle
+    $ librarian-chef install
+    $ ln -s ../ cookbooks/tacacs
+    $ rspec cookbooks/tacacs
 
 License and Author
 ==================

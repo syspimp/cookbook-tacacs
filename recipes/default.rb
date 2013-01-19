@@ -29,34 +29,37 @@ package "tacacs+" do
 end
 
 service "tacacs_plus" do
-  supports :restart => true
   pattern "tac_plus"
+  supports :restart => true
+
+  action [ :enable, :start ]
 end
 
 directory node['tacacs']['log_dir'] do
   owner "root"
   group "root"
-
-  action :create
+  mode   00644
 end
 
 template node['tacacs']['default'] do
   source "tacacs.erb"
-  mode   0644
+  owner  "root"
+  group  "root"
+  mode   00644
 
-  notifies :restart, resources(:service => "tacacs_plus")
+  notifies :restart, "service[tacacs_plus]"
 end
 
 template node['tacacs']['config'] do
   source "tac_plus_conf.erb"
-  mode   0640
+  owner  "root"
+  group  "root"
+  mode   00640
 
   variables(
-    :admins       => admins,
-    :viewers      => viewers,
-    :acc_log_path => node['tacacs']['acct_log_path'],
-    :tac_key      => node['tacacs']['tac_key']
+    :admins  => admins,
+    :viewers => viewers
   )
 
-  notifies :restart, resources(:service => "tacacs_plus")
+  notifies :restart, "service[tacacs_plus]"
 end
