@@ -1,7 +1,7 @@
-cookbook-tacacs
-===============
+tacacs
+======
 
-Installs/Configures `tac_plus`
+Installs/Configures `tacacs`
 
 REQUIREMENTS
 ============
@@ -9,13 +9,12 @@ REQUIREMENTS
 ATTRIBUTES
 ==========
 
-
-* default['tacacs']['config'] - Path to configuration file for tacacs.
-* default['tacacs']['init'] - Path to tacacs init.d file.
-* default['tacacs']['default'] - Path to tacacs default file.
-* default['tacacs']['log_dir'] - Directory to store tacacs related log.
-* default['tacacs']['acct_log_path'] - Path to tacacs accounting log fi.le
-* default['tacacs']['interface'] - Interface to bind `tac_plus` process.
+* default["tacacs"]["config"] - Path to configuration file for tacacs.
+* default["tacacs"]["init"] - Path to tacacs init.d file.
+* default["tacacs"]["default"] - Path to tacacs default file.
+* default["tacacs"]["log_dir"] - Directory to store tacacs related log.
+* default["tacacs"]["acct_log_path"] - Path to tacacs accounting log fi.le
+* default["tacacs"]["interface"] - Interface to bind `tac_plus` process.
 
 Optional:
 * default['tacacs']['tac_key'] - key to use for tacacs client/server.
@@ -30,16 +29,21 @@ TEMPLATES
 USAGE
 =====
 
+```json
+"run_list": [
+    "recipe[tacacs]"
+]
+```
+
 default
 -------
 
-Installs/Configures `tac_plus`
+Installs/Configures `tacacs`
 
 License and Author
 ==================
 
 Author:: Abel Lopez (<alop@att.com>)
-
 Author:: Chen Xu (<xc1643@att.com>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,4 +57,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
