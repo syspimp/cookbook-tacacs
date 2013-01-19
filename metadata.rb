@@ -1,3 +1,4 @@
+name             "tacacs"
 maintainer       "AT&T Services, Inc."
 maintainer_email "xc1643@att.com"
 license          "Apache 2.0"
