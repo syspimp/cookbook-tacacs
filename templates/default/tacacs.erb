@@ -5,6 +5,6 @@
 # You can overwrite default arguments passed to the daemon here.
 # See man(8) tac_plus
 
-DAEMON_OPTS="-C /etc/tacacs+/tac_plus.conf -B <%= node['network']['sw_mgmt_ipv4'] %>"
+DAEMON_OPTS="-C /etc/tacacs+/tac_plus.conf -B <%= node['network']['ipaddress_bond0'] %>"
 LOGDIR=<%= node['tacacs']['log_dir'] %>
-PIDFILE=/var/run/tac_plus.pid.<%= node['network']['sw_mgmt_ipv4'] %> # necessary due to '-B' above.
+PIDFILE=/var/run/tac_plus.pid.<%= node['network']['ipaddress_bond0'] %> # necessary due to '-B' above.
