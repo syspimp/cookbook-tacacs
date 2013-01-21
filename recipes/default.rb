@@ -18,7 +18,7 @@
 #
 
 if Chef::Config[:solo]
-  Chef::Log.warn("This recipe uses search. Chef Solo does not support search".)
+  Chef::Log.warn("This recipe uses search. Chef Solo does not support search.")
 else
   admins = search(
    :users, "tacacs_admin:#{node.chef_environment} OR tacacs_admin:all"
