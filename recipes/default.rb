@@ -17,16 +17,12 @@
 # limitations under the License.
 #
 
-if Chef::Config[:solo]
-  Chef::Log.warn("This recipe uses search. Chef Solo does not support search.")
-else
-  admins = search(
-   :users, "tacacs_admin:#{node.chef_environment} OR tacacs_admin:all"
-    ).map { |u| u['id'] }.uniq
-  viewers = search(
-    :users, "tacacs_viewonly:#{node.chef_environment} OR tacacs_viewonly:all"
-    ).map { |u| u['id'] }.uniq - admins
-end
+admins = search(
+  :users, "tacacs_admin:#{node.chef_environment} OR tacacs_admin:all"
+).map { |u| u['id'] }.uniq
+viewers = search(
+  :users, "tacacs_viewonly:#{node.chef_environment} OR tacacs_viewonly:all"
+).map { |u| u['id'] }.uniq - admins
 
 package "tacacs+" do
   action :upgrade
