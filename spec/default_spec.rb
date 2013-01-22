@@ -44,5 +44,15 @@ describe "tacacs::default" do
 
   describe "/etc/tacacs+/tac_plus.conf+" do
     before { @file = "/etc/tacacs+/tac_plus.conf" }
+
+    it "has proper owner" do
+      @chef_run.template(@file).should be_owned_by("root", "root")
+    end
+
+    it "has proper modes" do
+      m = @chef_run.template(@file).mode
+
+      sprintf("%o", m).should == "644"
+    end
   end
 end
