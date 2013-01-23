@@ -52,7 +52,7 @@ describe "tacacs::default" do
     it "has proper modes" do
       m = @chef_run.template(@file).mode
 
-      sprintf("%o", m).should == "644"
+      sprintf("%o", m).should == "640"
     end
   end
 end
