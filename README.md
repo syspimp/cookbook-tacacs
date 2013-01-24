@@ -69,6 +69,7 @@ License and Author
 
 Author:: Abel Lopez (<alop@att.com>)
 Author:: Chen Xu (<xc1643@att.com>)
+Author:: John Dewey (<john@dewey.ws>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
