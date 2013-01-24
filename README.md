@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/alop/cookbook-tacacs.png?branch=master)](https://travis-ci.org/alop/cookbook-tacacs)
+
 tacacs
 ======
 
@@ -57,13 +58,11 @@ Viewer:
 Testing
 =====
 
-This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for testing.
+This cookbook is using [ChefSpec](https://github.com/acrmp/chefspec) for
+testing.  Should run the following before commiting.  It will run your tests,
+and check for lint errors.
 
-    $ cd $repo
-    $ bundle
-    $ librarian-chef install
-    $ ln -s ../ cookbooks/tacacs
-    $ rspec cookbooks/tacacs
+    % ./run_tests.bash
 
 License and Author
 ==================
