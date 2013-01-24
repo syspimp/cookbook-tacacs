@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/alop/cookbook-tacacs.png?branch=master)](https://travis-ci.org/alop/cookbook-tacacs)
 tacacs
 ======
 
