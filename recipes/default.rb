@@ -18,10 +18,10 @@
 #
 
 admins = search(
-  :users, "tacacs:admin AND admin:#{node.chef_environment} OR admin:all"
+  :users, "tacacs:admin AND (admin:#{node.chef_environment} OR admin:all)"
 ).map { |u| u['id'] }.uniq
 viewers = search(
-  :users, "tacacs:viewonly AND viewonly:#{node.chef_environment} OR viewonly:all"
+  :users, "tacacs:viewonly AND (viewonly:#{node.chef_environment} OR viewonly:all)"
 ).map { |u| u['id'] }.uniq - admins
 
 package "tacacs+" do
