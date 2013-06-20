@@ -11,8 +11,12 @@ describe "tacacs::default" do
       { "id" => "bar" },
       { "id" => "baz" }
     ]
-    ::Chef::Recipe.any_instance.stub(:search).with(:users, "tacacs_admin:_default OR tacacs_admin:all").and_return admins
-    ::Chef::Recipe.any_instance.stub(:search).with(:users, "tacacs_viewonly:_default OR tacacs_viewonly:all").and_return viewers
+    ::Chef::Recipe.any_instance.stub(:search).
+      with(:users, "tacacs:admin AND (admin:_default OR admin:all)").
+      and_return admins
+    ::Chef::Recipe.any_instance.stub(:search).
+      with(:users, "tacacs:viewonly AND (viewonly:_default OR viewonly:all)").
+      and_return viewers
     @chef_run = ::ChefSpec::ChefRunner.new.converge "tacacs::default"
   end
 
