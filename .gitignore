@@ -1,3 +1,3 @@
-.bundle
+.berkshelf/
+.bundle/
 .cookbooks/
-Berksfile.lock
