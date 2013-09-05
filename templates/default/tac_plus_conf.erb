@@ -7,8 +7,6 @@ accounting file = <%= node['tacacs']['acct_log_path'] %>
 key = <%= node['tacacs']['tac_key'] %>
 <% end -%>
 
-default authentication = file /etc/passwd
-
 <% ! @admins.empty? && @admins.each do |admin| -%>
 user = <%= admin %> {
     member = admin
@@ -23,14 +21,21 @@ user = <%= viewer %> {
 
 group = admin {
     default service = permit
+    login = PAM
+    service = exec {
+        priv-lvl = 15
+    }
 }
 
 group = viewonly {
     default service = deny
-    cmd = show {
-        permit .*
-    }
-    cmd = enable {
-        permit .*
-    }
+    login = PAM
+    cmd = show { permit .* }
+    cmd = copy { permit .* }
+    cmd = enable { permit .* }
+    service = exec { priv-lvl = 10 }
+    cmd = routing-context { permit .* }
+    cmd = bash { permit .* }
+    cmd = sudo { permit .* }
+    cmd = ip { permit .* }
 }
