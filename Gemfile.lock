@@ -8,11 +8,10 @@ GEM
     akami (1.2.0)
       gyoku (>= 0.4.0)
       nokogiri (>= 1.4.0)
-    berkshelf (2.0.9)
+    berkshelf (2.0.10)
       activesupport (~> 3.2.0)
       addressable (~> 2.3.4)
       buff-shell_out (~> 0.1)
-      celluloid (>= 0.14.0)
       chozo (>= 0.6.1)
       faraday (>= 0.8.5)
       hashie (>= 2.0.2)
@@ -205,7 +204,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  berkshelf (~> 2.0.9)
+  berkshelf (~> 2.0.10)
   chef (~> 11.4.4)
   chefspec (~> 1.2.0)
   foodcritic
