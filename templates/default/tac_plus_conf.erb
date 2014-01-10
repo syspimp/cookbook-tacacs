@@ -14,10 +14,27 @@ user = <%= admin %> {
 <% end -%>
 
 <% ! @viewers.empty? && @viewers.each do |viewer| -%>
+  <%- if node['tacacs']['robot']['username'] && viewer != node['tacacs']['robot']['username'] -%>
 user = <%= viewer %> {
     member = viewonly
 }
+  <% end -%>
 <% end -%>
+
+<% if node['tacacs']['robot']['username'] -%>
+user = <%= node['tacacs']['robot']['username'] %> {
+    login = cleartext <%= @user_creds['password'] %>
+    cmd = show { permit .* }
+    cmd = copy { permit .* }
+    cmd = enable { permit .* }
+    service = exec { priv-lvl = 10 }
+    cmd = routing-context { permit .* }
+    cmd = bash { permit .* }
+    cmd = sudo { permit .* }
+    cmd = ip { permit .* }
+}
+<% end -%>
+
 
 group = admin {
     default service = permit
@@ -36,6 +53,5 @@ group = viewonly {
     service = exec { priv-lvl = 10 }
     cmd = routing-context { permit .* }
     cmd = bash { permit .* }
-    cmd = sudo { permit .* }
     cmd = ip { permit .* }
 }

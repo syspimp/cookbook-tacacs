@@ -17,6 +17,10 @@ describe "tacacs::default" do
     ::Chef::Recipe.any_instance.stub(:search).
       with(:users, "tacacs:viewonly AND (viewonly:_default OR viewonly:all)").
       and_return viewers
+    ::Chef::EncryptedDataBagItem.stub(:load).with('user_passwords', 'nmanager').and_return({
+      'password' => 'test',
+    })
+
     @chef_run = ::ChefSpec::ChefRunner.new.converge "tacacs::default"
   end
 

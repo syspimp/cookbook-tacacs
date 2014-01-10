@@ -23,3 +23,6 @@ default["tacacs"]["config"] = "/etc/tacacs+/tac_plus.conf"
 default["tacacs"]["init"] = "/etc/init.d/tacacs_plus"
 default["tacacs"]["acct_log_path"] = "#{node["tacacs"]["log_dir"]}/tac_plus.acct"
 default["tacacs"]["tac_key"] = nil
+
+default["tacacs"]["robot"]["username"] = "nmanager"
+default["tacacs"]["secret"]["key_path"] = "/etc/chef/encrypted_data_bag_secret"

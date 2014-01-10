@@ -24,6 +24,8 @@ viewers = search(
   :users, "tacacs:viewonly AND (viewonly:#{node.chef_environment} OR viewonly:all)"
 ).map { |u| u['id'] }.uniq - admins
 
+user_creds = Chef::EncryptedDataBagItem.load("user_passwords", node['tacacs']['robot']['username'])
+
 package "tacacs+" do
   action :upgrade
 end
@@ -57,6 +59,7 @@ template node['tacacs']['config'] do
   mode   00640
 
   variables(
+    :user_creds => user_creds,
     :admins  => admins,
     :viewers => viewers
   )
