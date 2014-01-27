@@ -58,9 +58,7 @@ Viewer:
 Testing
 =======
 
-    $ bundle install
-    $ bundle exec berks install
-    $ bundle exec strainer test
+See SilverLining documentation
 
 License and Author
 ==================
