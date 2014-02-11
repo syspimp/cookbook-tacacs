@@ -50,6 +50,7 @@ group = viewonly {
     cmd = show { permit .* }
     cmd = copy { permit .* }
     cmd = enable { permit .* }
+    cmd = terminal { permit .* }
     service = exec { priv-lvl = 10 }
     cmd = routing-context { permit .* }
     cmd = bash { permit .* }
