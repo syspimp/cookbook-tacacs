@@ -27,7 +27,7 @@ viewers = search(
 user_creds = Chef::EncryptedDataBagItem.load("user_passwords", node['tacacs']['robot']['username'])
 
 package "tacacs+" do
-  action :upgrade
+  action :install
 end
 
 service "tacacs_plus" do
@@ -35,6 +35,15 @@ service "tacacs_plus" do
   supports :restart => true
 
   action [ :enable, :start ]
+end
+
+bash "hard_restart" do
+  code <<-EOF
+    service tacacs_plus stop
+    /usr/bin/pkill tac_plus
+    service tacacs_plus start
+  EOF
+  action :nothing
 end
 
 directory node['tacacs']['log_dir'] do
@@ -49,7 +58,7 @@ template node['tacacs']['default'] do
   group  "root"
   mode   00644
 
-  notifies :restart, "service[tacacs_plus]"
+  notifies :run, "bash[hard_restart]"
 end
 
 template node['tacacs']['config'] do
@@ -64,5 +73,5 @@ template node['tacacs']['config'] do
     :viewers => viewers
   )
 
-  notifies :restart, "service[tacacs_plus]"
+  notifies :run, "bash[hard_restart]"
 end
