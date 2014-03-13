@@ -24,14 +24,44 @@ user = <%= viewer %> {
 <% if node['tacacs']['robot']['username'] -%>
 user = <%= node['tacacs']['robot']['username'] %> {
     login = cleartext <%= @user_creds['password'] %>
+    service = exec { priv-lvl = 10 }
     cmd = show { permit .* }
     cmd = copy { permit .* }
     cmd = enable { permit .* }
-    service = exec { priv-lvl = 10 }
     cmd = routing-context { permit .* }
     cmd = bash { permit .* }
     cmd = sudo { permit .* }
     cmd = ip { permit .* }
+    cmd = crontab { permit .* }
+    cmd = grep { permit .* }
+    cmd = which { permit .* }
+    cmd = /mnt/flash/chef/chef-client { permit .* }
+    cmd = /mnt/flash/chef/sysdb-root-wrapper { permit .* }
+    cmd = echo { permit .* }
+    cmd = terminal { permit .* }
+    cmd = if { permit .* }
+    cmd = mkdir { permit .* }
+    cmd = chmod { permit .* }
+    cmd = syncfiles.sh { permit .* }
+    cmd = configure { permit .* }
+    cmd = username { permit .* }
+    cmd = cat { permit .* }
+    cmd = wget { permit .* }
+    cmd = rm { permit .* }
+    cmd = cd { permit .* }
+    cmd = sed { permit .* }
+    cmd = tacacs-server { permit .* }
+    cmd = aaa { permit .* }
+    cmd = sflow { permit .* }
+    cmd = snmp { permit .* }
+    cmd = syslog { permit .* }
+    cmd = ntp { permit .* }
+    cmd = include { permit .* }
+    cmd = event-handler { permit .* }
+    cmd = no { permit .* }
+    cmd = banner { permit .* }
+    cmd = alias { permit .* }
+    cmd = /mnt/flash/chef/fixvrf.sh { permit .* }
 }
 <% end -%>
 
@@ -47,11 +77,11 @@ group = admin {
 group = viewonly {
     default service = deny
     login = PAM
+    service = exec { priv-lvl = 10 }
     cmd = show { permit .* }
     cmd = copy { permit .* }
     cmd = enable { permit .* }
     cmd = terminal { permit .* }
-    service = exec { priv-lvl = 10 }
     cmd = routing-context { permit .* }
     cmd = bash { permit .* }
     cmd = ip { permit .* }
